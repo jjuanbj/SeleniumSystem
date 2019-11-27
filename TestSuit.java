@@ -22,8 +22,7 @@ public abstract class TestSuit extends RationalTestScript {
 	private List<TestSuitResult> results;
 	private Integer suitNumber;
 	private List<TestCase> testCases;
-	private boolean takeScreenshot = false;
-	
+	private boolean takeScreenshot = false;	
 
 	public void testMain(Object[] args) {
 		
@@ -61,8 +60,7 @@ public abstract class TestSuit extends RationalTestScript {
 			//Generate report
 		}
 		
-		generateCustomReport();
-		
+		generateCustomReport();		
 	}	
 	
 	protected boolean generateFrameworkReport(){
@@ -104,8 +102,7 @@ public abstract class TestSuit extends RationalTestScript {
 		
 		if(name == null){
 			return this.getClass().getSimpleName();
-		}
-		
+		}		
 		return name;
 	}
 
