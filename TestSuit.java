@@ -1,4 +1,4 @@
-package framework.interfaz;
+package framework.interface;
 
 import java.util.ArrayList;
 import java.util.Date;
