@@ -185,7 +185,7 @@ public abstract class TestStep extends RationalTestScript {
 		try {	
 			path="C:\\FUNCTIONAL-TESTER\\psc\\SC-"+today+".png";		
 						
-			ImageIO.write(Accion.takeScreenShot(), "png", new File(path));
+			ImageIO.write(Action.takeScreenShot(), "png", new File(path));
 		
 		} catch (IOException e) {
 			
@@ -212,13 +212,13 @@ public abstract class TestStep extends RationalTestScript {
 		return path;		
 	}
 	
-	public boolean 	logTestResulta(String desc ,  boolean result){	
+	public boolean 	logTestResult(String desc ,  boolean result){	
 		setSucceed(result);			
 		logTestResult(desc, result);			
 		return result;		
 	}	
 	
-	public boolean 	logTestResulta(String desc ,  boolean result, String comment){	
+	public boolean 	logTestResult(String desc ,  boolean result, String comment){	
 		setSucceed(result);			
 		logTestResult(desc, result,comment);			
 		return result;		
