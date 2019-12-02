@@ -93,7 +93,6 @@ public abstract class TestStep extends RationalTestScript {
 		getDescriptions().add(description);
 	}
 
-
 	public void addResult(TestStepResult result){
 		if(getResults() == null){
 			setResults(new LinkedList<TestStepResult>());
@@ -123,7 +122,6 @@ public abstract class TestStep extends RationalTestScript {
 	public List<TestStepResult> getResults() {
 		return results;
 	}
-
 
 	public void setResults(List<TestStepResult> results) {
 		this.results = results;
