@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class CertificationRequestPO extends PageObject_Main {
+public class CertificationRequestPO extends PageObjectMain {
 
 	public CertificationRequestPO(WebDriver driver) {
 		super(driver);
@@ -32,18 +32,18 @@ public class CertificationRequestPO extends PageObject_Main {
 	@FindBy(xpath = "//*[@id='content_content_derecha']/table/tbody/tr/td")
 	private WebElement right_content;
 
-	public boolean VerifyEntranceApplicationCertification(
-			String _right_content) {
+	public boolean verifyEntranceApplicationCertification(
+			String _rightContent) {
 
-		SeleniumActionController.waitForElementExist(right_content);
-		SeleniumActionController.markField(right_content);
+		SeleniumActionController.waitForElementExist(rightContent);
+		SeleniumActionController.markField(rightContent);
 
-		right_content.click();
+		rightContent.click();
 
 		System.out.println("title sent equals: "
-				+ _right_content.equals(right_content.getText()));
+				+ _rightContent.equals(rightContent.getText()));
 		
-		if (_right_content.equals(right_content.getText().trim())) {
+		if (_rightContent.equals(rightContent.getText().trim())) {
 			return true;
 		} else {
 			return false;
