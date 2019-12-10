@@ -2,7 +2,7 @@ package TestStep;
 
 import library.utility.SeleniumActionController;
 import library.utility.SeleniumUtility;
-import resources.TestStep.TSLogoutSeleniumIntranetHelper;
+import resources.TestStep.LogoutSeleniumIntranetHelper;
 import PageObjects.IntranetWebElements;
 
 /**
@@ -10,8 +10,8 @@ import PageObjects.IntranetWebElements;
  * 
  * @author jjimenez
  */
-public class TSLogoutSeleniumIntranet extends
-		TSLogoutSeleniumIntranetHelper {
+public class LogoutSeleniumIntranet extends
+		LogoutSeleniumIntranetHelper {
 	/**
 	 * Script Name : <b>TS_Logout_Selenium_Intranet</b> Generated : <b>Dec 12,
 	 * 2019 8:09:54 AM</b> Description : Functional Test Script Original Host :
