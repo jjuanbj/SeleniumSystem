@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-import resources.TestStep.TS_Login_Selenium_IntranetHelper;
+import resources.TestStep.LoginSeleniumIntranetHelper;
 import library.utility.Selenium;
 import library.utility.SeleniumUtility;
 import PageObjects.IntranetWebElements;
@@ -17,7 +17,7 @@ import PageObjects.IntranetWebElements;
  * Description   : Functional Test Script
  * @author jjimenez
  */
-public class TS_Login_Selenium_Intranet extends TS_Login_Selenium_IntranetHelper
+public class LoginSeleniumIntranet extends LoginSeleniumIntranetHelper
 {
 	/**
 	 * Script Name   : <b>TS_Login_Selenium_Intranet</b>
@@ -33,7 +33,7 @@ public class TS_Login_Selenium_Intranet extends TS_Login_Selenium_IntranetHelper
 	boolean capsLock = false;	 
 	private static String serer = "xxxxxxxxxxxxxx:xxx";	
 
-	public TS_Login_Selenium_Intranet(String user, String password) {
+	public LoginSeleniumIntranet(String user, String password) {
 		super();
 		this.user = user;
 		this.password = password;
@@ -64,15 +64,15 @@ public class TS_Login_Selenium_Intranet extends TS_Login_Selenium_IntranetHelper
 					KeyEvent.VK_CAPS_LOCK, false);
 		}
 
-		SeleniumActionController.setText(IntranetWebElements.textboxUser_XpathSelector, user);
-		SeleniumActionController.setText(IntranetWebElements.textboxPassword_XpathSelector, password);
+		SeleniumActionController.setText(IntranetWebElements.textboxUserXpathSelector, user);
+		SeleniumActionController.setText(IntranetWebElements.textboxPasswordXpathSelector, password);
 		
 		setScreenshot(getRootTestObject().getScreenSnapshot());
 
 		String xpathUserLabel = String.format("//*[@id='infouser']/table/tbody/tr/td/font[contains(text(),'%s')]",user);
 
 		if(SeleniumActionController.clickWaitObject(
-				IntranetWebElements.buttonLogIn_XpathSelector,
+				IntranetWebElements.buttonLogInXpathSelector,
 				By.xpath(xpathUserLabel)))
 		{
 			logTestResult("Verification Point Checked!", true,
