@@ -56,5 +56,19 @@ public class SeleniumActionController extends RationalTestScript {
 
 	public static WebElement searchObject(By elementExpression) {
 		return searchObject(elementExpression, Timeout.get5());
+	}	
+	
+	public static WebElement searchObject(By elementExpression, long seconds) {
+		return wait.withTimeout(seconds, TimeUnit.SECONDS)
+				.until(ExpectedConditions
+						.presenceOfElementLocated(elementExpression));
+	}
+
+	public static List<WebElement> searchObjectsWithAttempts(
+			By elementExpression, long seconds) {
+
+		return wait.withTimeout(seconds, TimeUnit.SECONDS).until(
+				ExpectedConditions
+						.presenceOfAllElementsLocatedBy(elementExpression));
 	}
 }
