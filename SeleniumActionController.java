@@ -71,4 +71,33 @@ public class SeleniumActionController extends RationalTestScript {
 				ExpectedConditions
 						.presenceOfAllElementsLocatedBy(elementExpression));
 	}
+	
+	
+	public static boolean changeWindow(int windowsQuantity) {
+
+		wait.until(ExpectedConditions.numberOfWindowsToBe(windowsQuantity));
+		firstPage = SeleniumUtility.getDriver().getWindowHandle();
+
+		for (String window : SeleniumUtility.getDriver().getWindowHandles()) {
+
+			SeleniumUtility.getDriver().switchTo().window(window);
+
+			Set<String> winHandles = SeleniumUtility.getDriver()
+					.getWindowHandles();
+			// Loop through all handles
+			for (String handle : winHandles) {
+				if (!handle.equals(firstPage)) {
+					SeleniumUtility.getDriver().switchTo().window(handle);
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {						
+						e.printStackTrace();
+					}
+					System.out.println("Title of the new window: "
+							+ SeleniumUtility.getDriver().getTitle());
+				}
+			}
+		}
+		return SeleniumUtility.getDriver().getWindowHandle() != firstPage;
+	}
 }
