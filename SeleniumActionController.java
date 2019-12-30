@@ -100,4 +100,30 @@ public class SeleniumActionController extends RationalTestScript {
 		}
 		return SeleniumUtility.getDriver().getWindowHandle() != firstPage;
 	}
+	
+	public static boolean changeWindow(String windowTitle,
+			WebElement element, int windowsQuantity) {
+
+		wait.until(ExpectedConditions.numberOfWindowsToBe(windowsQuantity));
+		firstPage = SeleniumUtility.getDriver().getWindowHandle();
+
+		for (String window : SeleniumUtility.getDriver().getWindowHandles()) {
+
+			SeleniumUtility.getDriver().switchTo().window(window);
+
+			if (!firstPage.equals(SeleniumUtility.getDriver()
+					.getWindowHandle())) {
+
+				wait.until(ExpectedConditions.titleContains(windowTitle));
+
+				if (SeleniumUtility.getDriver().getTitle()
+						.contains(windowTitle)) {
+
+					wait.until(ExpectedConditions.visibilityOf(element));
+					return true;
+				}
+			}
+		}
+		return false;
+	}
 }
