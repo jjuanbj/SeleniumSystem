@@ -126,4 +126,13 @@ public class SeleniumActionController extends RationalTestScript {
 		}
 		return false;
 	}
+	
+	
+	public static void closeSecondaryWindow() {
+
+		SeleniumUtility.getDriver().close();
+		System.out.println("seleniumUtility focus value: "
+				+ firstPage);
+		SeleniumUtility.getDriver().switchTo().window(firstPage);
+	}
 }
