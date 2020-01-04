@@ -135,4 +135,52 @@ public class SeleniumActionController extends RationalTestScript {
 				+ firstPage);
 		SeleniumUtility.getDriver().switchTo().window(firstPage);
 	}
+	
+	
+	public static boolean consultDataTableByContains(By tableExpression,
+			String... data) {
+
+		boolean result = false;
+
+		if (tableExpression == null || data.length == 0)
+			return result;
+
+		List<WebElement> rows = SeleniumUtilitys.getDriver().findElements(
+				tableExpression);
+		int validations = data.length;
+
+		for (WebElement row : rows) {
+
+			List<WebElement> columns = row.findElements(By.tagName("td"));
+
+			int col_count = columns.size();
+
+			for (int columnIndex = 0; columnIndex < col_count; columnIndex++) {
+
+				String columnValue = columns.get(columnIndex).getText();
+
+				for (int i = 0; i < data.length; i++) {
+					if (columnValue.trim().toLowerCase()
+							.contains(data[i].trim().toLowerCase())) {
+						validations--;
+						System.out.println("match column:" + columnIndex
+								+ " = " + columnValue);
+						break;
+					}
+				}
+			}
+
+			if (validations == 0) {
+				markField(row);
+				result = true;
+				hoover(row);
+				break;
+			} else {
+				validations = data.length;
+			}
+
+		}
+
+		return result;
+	}
 }
