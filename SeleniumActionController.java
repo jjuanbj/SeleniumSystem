@@ -183,4 +183,69 @@ public class SeleniumActionController extends RationalTestScript {
 
 		return result;
 	}
+	
+	
+
+	public static boolean consultDataTableByContains(String xpathTabla,
+			String... data) {
+
+		boolean result = false;
+
+		if (xpathTable.isEmpty() || data.length == 0)
+			return result;
+
+		int validation = data.length;
+		int rowSize = SeleniumUtility.getDriver()
+				.findElements(By.xpath(xpathTable + "/tbody/tr")).size();
+
+		int columnSize = 0;
+		int startRowIndex = 1;
+
+		if (rowSize > 1) {
+			columnSize = SeleniumUtility.getDriver()
+					.findElements(By.xpath(xpathTable + "/tbody/tr[2]/td"))
+					.size();
+			startRowIndex = 2;
+		} else {
+			columnSize = SeleniumUtility.getDriver()
+					.findElements(By.xpath(xpathTable + "/tbody/tr[1]/td"))
+					.size();
+		}
+
+		for (int rowIndex = startRowIndex; rowIndex <= rowSize; rowIndex++) {
+
+			for (int columnIndex = 1; columnIndex <= columnSize; columnIndex++) {
+
+				String columnValue = SeleniumUtility
+						.getDriver()
+						.findElement(
+								By.xpath(xpathTable + "/tbody/tr[" + rowIndex
+										+ "]/td[" + columnIndex + "]"))
+						.getText();
+
+				for (int i = 0; i < data.length; i++) {
+					if (columnValue.toLowerCase().trim()
+							.contains(datos[i].toLowerCase())) {
+						validation--;
+						System.out.println("match row:" + rowIndex + " = "
+								+ columnValue);
+						break;
+					}
+				}
+			}
+
+			if (validation == 0) {
+				markField(SeleniumUtility.getDriver().findElement(
+						By.xpath(xpathTable + "/tbody/tr[" + rowIndex + "]")));
+				result = true;
+				hoover(SeleniumUtility.getDriver().findElement(
+						By.xpath(xpathTable + "/tbody/tr[" + rowIndex + "]")));
+				break;
+			} else {
+				validation = data.length;
+			}
+		}
+
+		return result;
+	}
 }
