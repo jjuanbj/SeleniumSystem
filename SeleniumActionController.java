@@ -302,4 +302,32 @@ public class SeleniumActionController extends RationalTestScript {
 
 		return result;
 	}
+	
+	
+	public static boolean consultInTable(String idRegistry, String xpath) {
+
+		boolean result = false;
+		List<WebElement> registry = SeleniumUtility.getDriver()
+				.findElements(By.xpath(xpath));
+		js = (JavascriptExecutor) SeleniumUtility.getDriver();
+
+		try {
+			for (WebElement row : registry) {
+				if (row.getText().contains(idRegistry)) {
+					getAction().moveToElement(row).build().perform();
+					js.executeScript(
+							"arguments[0].style.backgroundColor='yellow';"
+									+ "arguments[0].style.color='red';",
+							row.findElement(By.xpath("//*[contains(text(), '"
+									+ idRegistry + "')]")));
+					result = true;
+					break;
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return result;
+	}
 }
