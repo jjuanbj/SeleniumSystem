@@ -330,4 +330,8 @@ public class SeleniumActionController extends RationalTestScript {
 
 		return result;
 	}
+	
+	public static Actions getAction() {
+		return new Actions(SeleniumUtility.getDriver());
+	}
 }
