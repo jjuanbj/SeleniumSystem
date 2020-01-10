@@ -334,4 +334,43 @@ public class SeleniumActionController extends RationalTestScript {
 	public static Actions getAction() {
 		return new Actions(SeleniumUtility.getDriver());
 	}
+	
+	// **** Consult only
+	public static boolean consultMultiple(WebElement Table, List<String> data) {
+		boolean result = false;
+
+		List<WebElement> rows = Table.findElements(By.tagName("tr"));
+
+		for (WebElement row : rows.subList(1, rows.size())) {
+			for (int i = 0; i < data.size(); i++) {
+
+				List<WebElement> columns = row.findElements(By.tagName("td"));
+				String temp = columns.get(i).getText();
+
+				// Break loop if does not contain next years
+				if (Integer.valueOf(columns.get(0).getText()) < Integer
+						.valueOf(data.get(0)))
+					return false;
+
+				if (temp.contains(",") || temp.contains("."))
+					temp = Action.currencyToInt(temp);
+
+				if (temp.equals(data.get(i))) {
+					System.out.println("match:" + temp + " = " + data.get(i));
+					result = true;
+				} else {
+					result = false;
+					break;
+				}
+			}
+
+			if (result) {
+				markField(row);
+				hoover(row);
+				break;
+			}
+		}
+
+		return result;
+	}
 }
