@@ -373,4 +373,18 @@ public class SeleniumActionController extends RationalTestScript {
 
 		return result;
 	}
+	
+	public static void click(By expressionClickElement) {
+
+		WebElement clickElement = searchObject(expressionClickElement);
+		if (clickElement != null) {
+
+			markField(clickElement);
+
+			mesagge += "The item was clicked "
+					+ clickElement.getAttribute("id");
+
+			clickElement.click();
+		}
+	}
 }
