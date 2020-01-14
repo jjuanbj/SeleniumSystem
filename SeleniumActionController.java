@@ -386,5 +386,34 @@ public class SeleniumActionController extends RationalTestScript {
 
 			clickElement.click();
 		}
+	}	
+	
+	public static boolean clickWaitObject(By expressionClickElement,
+			By expressionWaitElement) {
+
+		WebElement clickElement = searchObject(expressionClickElement);
+
+		if (clickElement == null) {
+			mensagge += "The element with expression "
+					+ expressionClickElement + " it's not visible";
+			return false;
+		}
+
+		markField(clickElement);
+		clickElement.click();
+		waitForPageLoaded();
+		WebElement waitedElement = searchObject(expressionWaitElement);
+
+		if (waitedElement != null
+				&& wait.until(ExpectedConditions.visibilityOf(waitedElement)) != null) {
+			markField(waitedElement);
+			mensagge += "The element " + waitedElement.getAttribute("id")
+					+ " shows correctly";
+			return true;
+		}
+
+		mensagge += "The element " + waitedElement.getAttribute("id")
+				+ " not showing correctly";
+		return false;
 	}
 }
