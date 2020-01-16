@@ -416,4 +416,10 @@ public class SeleniumActionController extends RationalTestScript {
 				+ " not showing correctly";
 		return false;
 	}
+	
+	
+	public static void uncheckElement(By elementExpression) {
+
+		uncheckElement(elementExpression, false);
+	}
 }
