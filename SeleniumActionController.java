@@ -422,4 +422,11 @@ public class SeleniumActionController extends RationalTestScript {
 
 		uncheckElement(elementExpression, false);
 	}
+	
+	
+	public static void uncheckElement(WebElement element) {
+		js = (JavascriptExecutor) SeleniumUtility.getDriver();
+		js.executeScript("arguments[0].style.backgroundColor='white';"
+				+ "arguments[0].style.color='black';", element);
+	}
 }
