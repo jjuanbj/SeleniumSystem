@@ -429,4 +429,37 @@ public class SeleniumActionController extends RationalTestScript {
 		js.executeScript("arguments[0].style.backgroundColor='white';"
 				+ "arguments[0].style.color='black';", element);
 	}
+	
+	
+	public static void uncheckElement(By elementExpression,
+			boolean removeStyle) {
+
+		WebElement element = searchObject(elementExpression);
+
+		if (element != null) {
+			js = (JavascriptExecutor) SeleniumUtility.getDriver();
+
+			System.out.println(element.getAttribute("style"));
+
+			if (!removeStyle) {
+				js.executeScript("arguments[0].style.backgroundColor='white';"
+						+ "arguments[0].style.color='black';", element);
+				return;
+			}
+
+			if (lastStyleObtained.isEmpty()) {
+				js.executeScript(
+						"arguments[0].removeAttribute('style', 'style');",
+						element);
+			} else {
+
+				js.executeScript(
+						"arguments[0].removeAttribute('style', 'style');",
+						element);
+
+				js.executeScript("arguments[0].setAttribute('style','"
+						+ lastStyleObtained + "')", element);
+			}
+		}
+	}
 }
