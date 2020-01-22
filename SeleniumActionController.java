@@ -462,4 +462,10 @@ public class SeleniumActionController extends RationalTestScript {
 			}
 		}
 	}
+	
+	
+	public static void refreshPage() {
+		((JavascriptExecutor) SeleniumUtility.getDriver())
+				.executeScript("location.reload()");
+	}
 }
