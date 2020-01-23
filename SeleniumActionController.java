@@ -468,4 +468,16 @@ public class SeleniumActionController extends RationalTestScript {
 		((JavascriptExecutor) SeleniumUtility.getDriver())
 				.executeScript("location.reload()");
 	}
+	
+	
+	public static void wait(int segs) {
+
+		try {
+			Thread.sleep(segs * 1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
 }
