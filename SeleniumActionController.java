@@ -467,8 +467,7 @@ public class SeleniumActionController extends RationalTestScript {
 	public static void refreshPage() {
 		((JavascriptExecutor) SeleniumUtility.getDriver())
 				.executeScript("location.reload()");
-	}
-	
+	}	
 	
 	public static void wait(int segs) {
 
@@ -478,6 +477,16 @@ public class SeleniumActionController extends RationalTestScript {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}	
+	
+	public static void waitVisibleElement(WebElement element) {
 
+		waitForElementoExist(element);
+
+		long time = 1;
+
+		do {
+			sleep(time);
+		} while (!element.isDisplayed());
 	}
 }
