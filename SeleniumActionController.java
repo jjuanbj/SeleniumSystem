@@ -489,4 +489,16 @@ public class SeleniumActionController extends RationalTestScript {
 			sleep(time);
 		} while (!element.isDisplayed());
 	}
+	
+	
+	public static void waitPage() {
+
+		wait.until(new ExpectedCondition<Boolean>() {
+			public Boolean apply(WebDriver driver) {
+				return ((JavascriptExecutor) SeleniumUtility.getDriver())
+						.executeScript("return document.readyState").equals(
+								"complete");
+			}
+		});
+	}
 }
