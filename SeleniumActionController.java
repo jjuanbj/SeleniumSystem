@@ -501,4 +501,14 @@ public class SeleniumActionController extends RationalTestScript {
 			}
 		});
 	}
+	
+	
+	public static void waitElementExist(By by, long time) {
+
+		do {
+
+			sleep(time);
+
+		} while (!waitElement(by));
+	}
 }
