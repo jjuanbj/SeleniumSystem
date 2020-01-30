@@ -511,4 +511,13 @@ public class SeleniumActionController extends RationalTestScript {
 
 		} while (!waitElement(by));
 	}
+	
+	public static void waitElementExist(WebElement element) {
+
+		long time = 1;
+
+		do {
+			sleep(time);
+		} while (!waitElement(element));
+	}
 }
