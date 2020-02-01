@@ -70,8 +70,7 @@ public class SeleniumActionController extends RationalTestScript {
 		return wait.withTimeout(seconds, TimeUnit.SECONDS).until(
 				ExpectedConditions
 						.presenceOfAllElementsLocatedBy(elementExpression));
-	}
-	
+	}	
 	
 	public static boolean changeWindow(int windowsQuantity) {
 
@@ -125,8 +124,7 @@ public class SeleniumActionController extends RationalTestScript {
 			}
 		}
 		return false;
-	}
-	
+	}	
 	
 	public static void closeSecondaryWindow() {
 
@@ -134,8 +132,7 @@ public class SeleniumActionController extends RationalTestScript {
 		System.out.println("seleniumUtility focus value: "
 				+ firstPage);
 		SeleniumUtility.getDriver().switchTo().window(firstPage);
-	}
-	
+	}	
 	
 	public static boolean consultDataTableByContains(By tableExpression,
 			String... data) {
