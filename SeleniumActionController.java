@@ -182,9 +182,7 @@ public class SeleniumActionController extends RationalTestScript {
 		}
 
 		return result;
-	}
-	
-	
+	}	
 
 	public static boolean consultDataTableByContains(String xpathTabla,
 			String... data) {
@@ -247,8 +245,7 @@ public class SeleniumActionController extends RationalTestScript {
 		}
 
 		return result;
-	}
-	
+	}	
 	
 	public static boolean consultDataTableByEqual(String xpathTable,
 			String... data) {
@@ -301,8 +298,7 @@ public class SeleniumActionController extends RationalTestScript {
 		}
 
 		return result;
-	}
-	
+	}	
 	
 	public static boolean consultInTable(String idRegistry, String xpath) {
 
@@ -415,21 +411,18 @@ public class SeleniumActionController extends RationalTestScript {
 		mensagge += "The element " + waitedElement.getAttribute("id")
 				+ " not showing correctly";
 		return false;
-	}
-	
+	}	
 	
 	public static void uncheckElement(By elementExpression) {
 
 		uncheckElement(elementExpression, false);
-	}
-	
+	}	
 	
 	public static void uncheckElement(WebElement element) {
 		js = (JavascriptExecutor) SeleniumUtility.getDriver();
 		js.executeScript("arguments[0].style.backgroundColor='white';"
 				+ "arguments[0].style.color='black';", element);
-	}
-	
+	}	
 	
 	public static void uncheckElement(By elementExpression,
 			boolean removeStyle) {
@@ -461,8 +454,7 @@ public class SeleniumActionController extends RationalTestScript {
 						+ lastStyleObtained + "')", element);
 			}
 		}
-	}
-	
+	}	
 	
 	public static void refreshPage() {
 		((JavascriptExecutor) SeleniumUtility.getDriver())
@@ -488,8 +480,7 @@ public class SeleniumActionController extends RationalTestScript {
 		do {
 			sleep(time);
 		} while (!element.isDisplayed());
-	}
-	
+	}	
 	
 	public static void waitPage() {
 
@@ -500,8 +491,7 @@ public class SeleniumActionController extends RationalTestScript {
 								"complete");
 			}
 		});
-	}
-	
+	}	
 	
 	public static void waitElementExist(By by, long time) {
 
@@ -519,5 +509,14 @@ public class SeleniumActionController extends RationalTestScript {
 		do {
 			sleep(time);
 		} while (!waitElement(element));
+	}
+	
+	public static void waitEnable(WebElement element) {
+
+		long time = 1;
+
+		do {
+			sleep(time);
+		} while (!element.isEnabled());
 	}
 }
