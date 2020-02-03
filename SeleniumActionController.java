@@ -516,4 +516,16 @@ public class SeleniumActionController extends RationalTestScript {
 			sleep(time);
 		} while (!element.isEnabled());
 	}
+	
+	private static boolean elementExist(By by) {
+
+		try {
+			SeleniumUtility.getDriver().findElement(by);
+			return true;
+
+		} catch (NoSuchElementException e) {
+
+			return false;
+		}
+	}
 }
