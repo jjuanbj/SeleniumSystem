@@ -528,4 +528,8 @@ public class SeleniumActionController extends RationalTestScript {
 			return false;
 		}
 	}
+		
+	public static boolean elementExist(By elementExpression) {
+		return elementExist(elementExpression, Timeout.get5());
+	}
 }
