@@ -532,4 +532,19 @@ public class SeleniumActionController extends RationalTestScript {
 	public static boolean elementExist(By elementExpression) {
 		return elementExist(elementExpression, Timeout.get5());
 	}
+	
+	public static boolean elementoExist(By elementExpression, long seconds) {
+
+		boolean result = false;
+		WebElement element = searchObject(elementExpression, seconds);
+
+		if (element != null && element.isDisplayed()) {
+			result = true;
+			markField(element);
+			message += " \nElement " + element
+					+ " is correctly displayed";
+		}
+
+		return result;
+	}
 }
