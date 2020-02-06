@@ -544,7 +544,19 @@ public class SeleniumActionController extends RationalTestScript {
 			message += " \nElement " + element
 					+ " is correctly displayed";
 		}
-
+		return result;
+	}
+	
+	
+	public static boolean elementExist(WebElement element) {
+		boolean result = false;
+		if (wait.until(ExpectedConditions.visibilityOf(element)) != null
+				&& element.isDisplayed()) {
+			result = true;
+			markField(element);
+			message += " \nElement " + element
+					+ " is correctly displayed";
+		}
 		return result;
 	}
 }
