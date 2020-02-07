@@ -559,4 +559,20 @@ public class SeleniumActionController extends RationalTestScript {
 		}
 		return result;
 	}
+		
+	public static boolean elementExist(WebElement element) {
+
+		try {
+			try {
+				element.isDisplayed();
+				return true;
+
+			} catch (NoSuchElementException e) {
+
+				return false;
+			}
+		} catch (StaleElementReferenceException e) {
+			return false;
+		}
+	}
 }
