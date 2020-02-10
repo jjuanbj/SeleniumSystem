@@ -575,4 +575,8 @@ public class SeleniumActionController extends RationalTestScript {
 			return false;
 		}
 	}
+	
+	public static String getMessage() {
+		return message;
+	}
 }
