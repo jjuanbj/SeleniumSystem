@@ -579,4 +579,11 @@ public class SeleniumActionController extends RationalTestScript {
 	public static String getMessage() {
 		return message;
 	}
+	
+	public static void hoover(By by) {
+
+		Actions action = new Actions(SeleniumUtility.getDriver());
+		WebElement we = SeleniumUtility.getDriver().findElement(by);
+		action.moveToElement(we).build().perform();
+	}
 }
