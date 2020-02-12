@@ -585,5 +585,13 @@ public class SeleniumActionController extends RationalTestScript {
 		Actions action = new Actions(SeleniumUtility.getDriver());
 		WebElement we = SeleniumUtility.getDriver().findElement(by);
 		action.moveToElement(we).build().perform();
+	}	
+	
+	public static void hoover(WebElement we) {
+
+		sleep(2);
+		Actions action = new Actions(SeleniumUtility.getDriver());
+		action.moveToElement(we).build().perform();
+
 	}
 }
