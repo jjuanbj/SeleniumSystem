@@ -592,6 +592,13 @@ public class SeleniumActionController extends RationalTestScript {
 		sleep(2);
 		Actions action = new Actions(SeleniumUtility.getDriver());
 		action.moveToElement(we).build().perform();
+	}	
+	
+	public static void markField(WebElement we) {
+		lastStyleObtained = we.getAttribute("style");
+		js = (JavascriptExecutor) SeleniumUtility.getDriver();
 
+		js.executeScript("arguments[0].style.backgroundColor='yellow';"
+				+ "arguments[0].style.color='red';", we);
 	}
 }
