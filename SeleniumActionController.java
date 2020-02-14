@@ -601,4 +601,22 @@ public class SeleniumActionController extends RationalTestScript {
 		js.executeScript("arguments[0].style.backgroundColor='yellow';"
 				+ "arguments[0].style.color='red';", we);
 	}
+	
+	public static boolean markInTableText(int col1, WebElement table,
+			String text) {
+
+		boolean value = false;
+		List<WebElement> columns = table.findElements(By
+				.cssSelector("td:nth-child(" + col1 + ")"));
+
+		for (int i = 1; i < columns.size(); ++i) {
+
+			if (columns.get(i).getText().contains(text)) {
+				markField(columns.get(i));
+				value = true;
+				break;
+			}
+		}
+		return value;
+	}
 }
