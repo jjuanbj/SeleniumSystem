@@ -619,4 +619,26 @@ public class SeleniumActionController extends RationalTestScript {
 		}
 		return value;
 	}
+	
+	public static boolean markInTableValue(int col1, int col2,
+			WebElement table, String ref, String data) {
+
+		boolean value = false;
+		List<WebElement> columns = table.findElements(By
+				.cssSelector("td:nth-child(" + col1 + ")"));
+		List<WebElement> columns2 = table.findElements(By
+				.cssSelector("td:nth-child(" + col2 + ")"));
+
+		for (int i = 1; i < columns.size(); ++i) {
+
+			if (columns.get(i).getText().contains(ref)
+					&& columns2.get(i).getText().contains(dato)) {
+				markField(columns.get(i));
+				markField(columns2.get(i));
+				value = true;
+				break;
+			}
+		}
+		return valor;
+	}
 }
