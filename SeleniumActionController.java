@@ -641,4 +641,15 @@ public class SeleniumActionController extends RationalTestScript {
 		}
 		return valor;
 	}
+	
+	public static boolean removeHighlightTable(String xpathTable,
+			int startRowIndex, int endRowIndex) {
+		boolean result = false;
+
+		for (int rowIndex = startRowIndex; rowIndex <= endRowIndex; rowIndex++) {
+			uncheckItem(By.xpath(xpathTable + "/tbody/tr[" + rowIndex
+					+ "]"));
+		}
+		return result;
+	}
 }
