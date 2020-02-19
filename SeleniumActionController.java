@@ -652,4 +652,11 @@ public class SeleniumActionController extends RationalTestScript {
 		}
 		return result;
 	}
+	
+	public static void removeReadOnly(WebElement element) {
+
+		js = (JavascriptExecutor) SeleniumUtility.getDriver();
+		
+		js.executeScript("arguments[0].readOnly = false", element);
+	}
 }
