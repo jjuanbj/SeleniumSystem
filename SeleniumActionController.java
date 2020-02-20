@@ -659,4 +659,13 @@ public class SeleniumActionController extends RationalTestScript {
 		
 		js.executeScript("arguments[0].readOnly = false", element);
 	}
+	
+	public static boolean itIsShowingAlert() {
+		try {
+			SeleniumUtility.getDriver().switchTo().alert();
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+	}
 }
