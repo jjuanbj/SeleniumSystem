@@ -668,4 +668,28 @@ public class SeleniumActionController extends RationalTestScript {
 			return false;
 		}
 	}
+	
+	/*
+	* Parameter: The Webelement table, the list of values to be compared
+	* with the table. Note: This is used in case the header is within
+	* the table, if outside use the other method
+	*/
+
+	public static boolean itIsShowingAlert(Alert alert) {
+
+		boolean itIsShowing = false;
+
+		try {
+			do {
+				sleep(1);
+			} while (alert.equals(null));
+
+			itIsShowing = true;
+
+		} catch (NullPointerException e) {
+
+			itIsShowing = false;
+		}
+		return itIsShowing;
+	}
 }
