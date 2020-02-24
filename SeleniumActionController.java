@@ -692,4 +692,20 @@ public class SeleniumActionController extends RationalTestScript {
 		}
 		return itIsShowing;
 	}
+	
+	/*
+	* Parameter: The Webelement table, and the list of values to be validated
+	* In the table
+	*/
+
+	public static void selectList(WebElement element, String value) {
+
+		Select dropList = new Select(element);
+		wait(1);
+		element.click();
+		dropList = new Select(element);
+		dropList.selectByVisibleText(value);
+
+		waitForPageLoaded();
+	}
 }
