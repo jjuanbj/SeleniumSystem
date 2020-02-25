@@ -708,4 +708,26 @@ public class SeleniumActionController extends RationalTestScript {
 
 		waitForPageLoaded();
 	}
+	
+	// Select an item from a drop-down list
+	public static boolean selectList(WebElement element, String value) {
+
+		boolean setCriterion = false;
+
+		try {
+
+			WebElement selectElement = element.findElement(By
+					.cssSelector("[value='" + value + "']"));
+
+			if (selectElement.isSelected()) {
+				setCriterion = true;
+			}
+
+		} catch (NoSuchElementException e) {
+			System.out.println("========== Element Not Found ==========");
+			System.out.println(e.toString());
+			setCriterion = false;
+		}
+		return setCriterion;
+	}
 }
