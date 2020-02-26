@@ -730,4 +730,45 @@ public class SeleniumActionController extends RationalTestScript {
 		}
 		return setCriterion;
 	}
+	
+	public static boolean selectDropDown(WebElement element, String value) {
+
+		Select dropDown = new Select(element);
+
+		String idComboBox = element.getAttribute("id");
+		element.click();
+		dropDown.selectByVisibleText(valor);
+		waitForPageLoaded();
+		String xpath = "//*[@id='" + idComboBox + "']/option";
+		List<WebElement> options = null;
+		int attempts = 0;
+		while (attempts < 2) {
+			try {
+				options = SeleniumUtility.getDriver().findElements(
+						By.xpath(xpath));
+				break;
+			} catch (Exception e) {
+			}
+			attempts++;
+		}
+
+		if (options != null) {
+
+			WebElement selectedOption = null;
+			for (WebElement option : options) {
+				if (option.getText() != null
+						&& option.getText().contains((value))) {
+					selectedOption = option;
+					break;
+				}
+			}
+
+			if (selectedOption != null) {
+				markField(selectedOption);
+				return true;
+			}
+		}
+		message += value + "-" + "could not be selected";
+		return false;
+	}
 }
