@@ -771,4 +771,25 @@ public class SeleniumActionController extends RationalTestScript {
 		message += value + "-" + "could not be selected";
 		return false;
 	}
+	
+	/*
+	* Parameter: Receive the table to be clicked, The value in the table
+	* that will be clicked and the column in which the value is
+	* to click
+	*/
+	public static boolean selectInTable(String idRegistry,
+			List<WebElement> records, String linkText) {
+
+		boolean result = false;
+
+		for (WebElement row : records) {
+			if (row.getText().contains(idRegistry)) {
+				row.findElement(By.linkText(linkText)).click();
+				result = true;
+				sleep(5);
+				break;
+			}
+		}
+		return result;
+	}
 }
