@@ -792,4 +792,23 @@ public class SeleniumActionController extends RationalTestScript {
 		}
 		return result;
 	}
+	
+	public static boolean selectInTable(String idRegistry, String xpath,
+			String linkText) {
+
+		boolean result = false;
+
+		List<WebElement> registry = SeleniumUtility.getDriver()
+				.findElements(By.xpath(xpath));
+
+		for (WebElement row : registry) {
+			if (row.getText().contains(idRegistry)) {
+				row.findElement(By.linkText(linkText)).click();
+				result = true;
+				sleep(5);
+				break;
+			}
+		}
+		return result;
+	}
 }
