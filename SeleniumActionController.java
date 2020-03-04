@@ -828,4 +828,47 @@ public class SeleniumActionController extends RationalTestScript {
 		}
 		return result;
 	}
+	
+	public static boolean select(List<WebElement> Table,
+			List<String> TaxpayerData, int CantColum) {
+
+		int t = 1, p = 0, Cant = 0;
+		message = " ";
+		boolean Result = false;
+
+		for (WebElement row : Table) {
+			for (int i = 1; i < CantColum + 1; i++) {
+				t = 1;
+				List<WebElement> column = row.findElements(By
+						.cssSelector("td:nth-child(" + i + ")"));
+
+				while (t < column.size()) {
+					Result = false;
+					if (column.get(t).getText()
+							.equals(TaxpayerData.get(p))) {
+						System.out.println(column.get(t).getText() + " = "
+								+ TaxpayerData.get(p));
+						markField(column.get(t));
+						Result = true;
+						break;
+					}
+					t++;
+				}
+				p++;
+
+				if (Result == false) {
+					mensaje = column.get(0).getText() + " - " + message;
+					Cant++;
+				}
+			}
+		}
+
+		if (Cant == 0) {
+			message = "The table was validated correctly";
+			return Result;
+		} else {
+			Result = false;
+			return Result;
+		}
+	}
 }
