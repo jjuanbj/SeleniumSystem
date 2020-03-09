@@ -947,4 +947,29 @@ public class SeleniumActionController extends RationalTestScript {
 		}
 		return Result;
 	}
+	
+	public static boolean SelectQuery(List<WebElement> Table,
+			String Link, int Column) {
+		// String message="";
+		boolean result = false;
+		for (WebElement row : Table) {
+			List<WebElement> column = row.findElements(By
+					.cssSelector("td:nth-child(" + Column + ")"));
+			for (WebElement column : column) {
+				if (column.getText().equals(Link)) {
+					WebElement linck = column.findElement(By.tagName("a"));
+					markField(link);
+					link.click();
+					result = true;
+					message = "Link was clicked";
+					break;
+				}
+			}
+		}
+
+		if (result == false) {
+			message = "Link to click was not found";
+		}
+		return result;
+	}
 }
