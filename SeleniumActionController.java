@@ -972,4 +972,51 @@ public class SeleniumActionController extends RationalTestScript {
 		}
 		return result;
 	}
+	
+	
+	/***
+	* Search the table taking into account the number of attributes sent in
+	* the "data" list
+	 * 
+	 * 
+	 * ***/
+
+	public static boolean SelectMultiple(WebElement Table,
+			List<String> data, String link) {
+		boolean result = false;
+
+		List<WebElement> rows = Table.findElements(By.tagName("tr"));
+
+		for (WebElement row : rows.subList(1, rows.size())) {
+			for (int i = 0; i < data.size(); i++) {
+
+				List<WebElement> columns = row.findElements(By.tagName("td"));
+
+				if (Integer.valueOf(columns.get(0).getText()) < Integer
+						.valueOf(data.get(0))) {
+					return false;
+				}
+
+				if (columns.get(i).getText().equals(data.get(i))) {
+					System.out.println(columns.get(i).getText() + " = "
+							+ data.get(i));
+
+					result = true;
+				} else {
+					result = false;
+					break;
+				}
+			}
+
+			if (result) {
+				markField(row);
+				row.findElement(By.tagName("a")).click();
+				wait(1);
+				break;
+			}
+
+		}
+
+		return result;
+	}
 }
