@@ -1019,4 +1019,16 @@ public class SeleniumActionController extends RationalTestScript {
 
 		return result;
 	}
+	
+	public static void selectValue(WebElement element, String value) {
+
+		Select dropList = new Select(element);
+
+		do {
+			wait(1);
+			dropList = new Select(element);
+			dropList.selectByVisibleText(value);
+			wait(1);
+		} while (dropList.getOptions().isEmpty());
+	}
 }
