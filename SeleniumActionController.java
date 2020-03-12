@@ -6,7 +6,7 @@ import java.util.Set;
 import java.util.Map.Entry;
 import java.util.concurrent.TimeUnit;
 
-import librery.Action;
+import library.Action;
 
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
@@ -1030,5 +1030,23 @@ public class SeleniumActionController extends RationalTestScript {
 			dropList.selectByVisibleText(value);
 			wait(1);
 		} while (dropList.getOptions().isEmpty());
+	}
+	
+	public static boolean setText(By elementExpression, String txt) {
+
+		WebElement field = searchObject(elementExpression);
+		if (field != null) {
+			field.clear();
+			field.sendKeys(txt);
+			markField(field);
+			if (field.getAttribute("value").contains(txt)) {
+				message += "/nWas written +" + txt + " in the field "
+						+ field.getAttribute("id");
+				return true;
+			}
+		}
+		message += "/nWas written +" + txt + " in the field "
+				+ field.getAttribute("id");
+		return false;
 	}
 }
