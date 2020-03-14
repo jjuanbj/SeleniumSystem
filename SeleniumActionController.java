@@ -1049,4 +1049,21 @@ public class SeleniumActionController extends RationalTestScript {
 				+ field.getAttribute("id");
 		return false;
 	}
+	
+	public static boolean setText(WebElement element, String txt) {
+
+		if (element != null) {
+			element.clear();
+			element.sendKeys(txt);
+			markField(element);
+			if (element.getAttribute("value").contains(txt)) {
+				message += "/nWas written+" + txt + " in the field "
+						+ element.getAttribute("id");
+				return true;
+			}
+		}
+		message += "/nWas not written +" + txt + " in the field "
+				+ element.getAttribute("id");
+		return false;
+	}
 }
