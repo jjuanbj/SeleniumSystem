@@ -1066,4 +1066,16 @@ public class SeleniumActionController extends RationalTestScript {
 				+ element.getAttribute("id");
 		return false;
 	}
+	
+	public static boolean setValue(String txt, WebElement field, String failure) {
+
+		boolean val;
+		field.clear();
+		field.sendKeys(txt);
+		val = field.getAttribute("value").contains(txt);
+		System.out.println(val ? "Correct" : Failure + " Failed");
+		if (!val)
+			message += message + " ";
+		return val;
+	}
 }
