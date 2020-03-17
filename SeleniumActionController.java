@@ -1078,4 +1078,26 @@ public class SeleniumActionController extends RationalTestScript {
 			message += message + " ";
 		return val;
 	}
+	
+	public static boolean validateAssertList(HashMap<String, Boolean> asserts) {
+		boolean validation = true;
+
+		for (Entry<String, Boolean> pair : asserts.entrySet()) {
+
+			if (!pair.getValue()) {
+				System.out.println("Failed in: " + pair.getKey());
+				validation = false;
+			}
+		}
+
+		for (Entry<String, Boolean> pair : asserts.entrySet()) {
+
+			if (!pair.getValue()) {
+				System.out.println("Failed in: " + pair.getKey());
+				validation = false;
+			}
+		}
+
+		return validation;
+	}
 }
